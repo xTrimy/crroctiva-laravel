@@ -1,0 +1,30 @@
+
+#blogPost img{
+    display: inline;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/Lora/Lora-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/Alexandria/Alexandria-VariableFont_wght.ttf') format('truetype');
+}
+#blogPost {
+    font-family: 'Lora', serif;
+}
+
+#blogPost:dir(rtl) {
+    font-family: 'Alexandria', serif;
+}

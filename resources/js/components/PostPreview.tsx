@@ -1,0 +1,31 @@
+import { Link } from '@inertiajs/react'
+import React, { useEffect } from 'react'
+import NoImage from '../assets/no-image.jpeg'
+function PostPreview({ id, image, text }: { id: number, image: string, text?: string }) {
+    if (text && text.length > 200) {
+        text = text.slice(0, 200) + '...'
+    }
+    return (
+        <div className='lg:w-1/3 max-w-xl w-full p-8 relative bg-cyan-100 rounded-md'>
+            <Link href={`/post/${id}`}>
+                <div className='w-full xl:h-96 lg:h-72 h-72 overflow-hidden rounded-md bg-black relative'>
+                    <div className='w-full h-full flex justify-center items-center text-2xl absolute top-0 left-0 text-white text-bold'>
+                        <p>
+                            Read More
+                        </p>
+                    </div>
+                    <img src={image ?? NoImage} className='object-cover w-full h-full hover:scale-110 transition-all hover:opacity-50 absolute top-0 left-0' alt="" />
+               
+                </div>
+            </Link>
+            <div className=' drop-shadow-md mt-4 text-gray-500'>
+                <p className='text-xl'>{text}</p>
+                <Link href={`/post/${id}`}>
+                    <p className='mt-4 cursor-pointer hover:underline'>Read More</p>
+                </Link>
+            </div>
+        </div>
+    )
+}
+
+export default PostPreview
