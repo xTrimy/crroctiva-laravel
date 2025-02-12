@@ -9,4 +9,5 @@ Route::get('/', [MainController::class, 'home']);
 
 Route::get('/test', [MainController::class, 'show']);
 Route::get('/post/{id}', [MainController::class, 'post']);
-Route::get('/service/{id}', [MainController::class, 'service']);
+Route::get('/service/{id}', [ MainController::class, 'service']);
+Route::get('/work/{id}', [MainController::class, 'work']);

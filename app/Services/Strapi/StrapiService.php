@@ -5,12 +5,17 @@ namespace App\Services\Strapi;
 use App\Services\Strapi\Entity\BlogPost;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
+use App\Services\Strapi\Entity\Work;
 use Illuminate\Support\Facades\Http;
 
 class StrapiService extends IStrapi{
-    public function getBlogPosts(): array
+    public function getBlogPosts(int $limit = null): array
     {
-        $data = $this->get( '/blog-posts');
+        $url = "/blog-posts";
+        if ($limit != null) {
+            $url .= "?pagination[limit]={$limit}";
+        }
+        $data = $this->get($url);
         $blog_posts = [];
         if ($data == null) {
             return [];
@@ -26,7 +31,7 @@ class StrapiService extends IStrapi{
         return new BlogPost($this->get( '/blog-posts/' . $id));
     }
 
-    public function getPartners(): array
+    public function getPartners(int $limit = null): array
     {
         $data = $this->get('/partners?populate=image');
         $partners = [];
@@ -39,9 +44,13 @@ class StrapiService extends IStrapi{
         return $partners;    
     }
 
-    public function getServices(): array
+    public function getServices(int $limit = null): array
     {
-        $data = $this->get('/services');
+        $url = "/services";
+        if ($limit != null) {
+            $url .= "?pagination[limit]={$limit}";
+        }
+        $data = $this->get($url);
         $services = [];
         if ($data == null) {
             return [];
@@ -56,5 +65,28 @@ class StrapiService extends IStrapi{
     {
         $data = $this->get("/services/{$id}?populate[features][populate]=*&populate=image");
         return new Service($data);
+    }
+
+    public function getWork(int $limit = null): array
+    {
+        $url = "/works?fields[0]=title&populate=image";
+        if ($limit != null) {
+            $url .= "&pagination[limit]={$limit}";
+        }
+        $data = $this->get($url);
+        $works = [];
+        if ($data == null) {
+            return [];
+        }
+        foreach ($data as $work) {
+            $works[] = new Work($work);
+        }
+        return $works;
+    }
+
+    public function getWorkSingle($id): Work
+    {
+        $data = $this->get("/works/{$id}?populate=image&populate=content");
+        return new Work($data);
     }
 }

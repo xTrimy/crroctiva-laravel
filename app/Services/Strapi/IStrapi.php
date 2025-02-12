@@ -25,9 +25,11 @@ abstract class IStrapi
         return $response->json()['data'];
     }
 
-    public abstract function getBlogPosts(): array;
+    public abstract function getBlogPosts(int $limit = null): array;
     public abstract function getBlogPost(string $id): BlogPost;
     public abstract function getPartners(): array;
-    public abstract function getServices(): array;
+    public abstract function getServices(int $limit = null): array;
     public abstract function getService($id): Service;
+
+    public abstract function getWork(int $limit = null): array;
 }
