@@ -6,6 +6,7 @@ use App\Services\Strapi\Entity\About;
 use App\Services\Strapi\Entity\BlogPost;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 abstract class IStrapi
@@ -22,7 +23,15 @@ abstract class IStrapi
     protected function get(string $endpoint): array | null
     {
         $endpoint = ltrim($endpoint, '/');
-        $response = Http::withToken($this->token)->get($this->url  . $endpoint);
+        if (Cache::has($endpoint)) {
+            return Cache::get($endpoint);
+        }
+        $response = Http::timeout(60)->withToken($this->token)->get($this->url  . $endpoint);
+        if (!$response->failed()) {
+            Cache::put($endpoint, $response->json()['data'], now()->addHour()); // 1 hour
+        }else{
+            return null;
+        }
         return $response->json()['data'];
     }
 
