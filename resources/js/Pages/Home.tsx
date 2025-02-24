@@ -26,7 +26,7 @@ function Home({blogs, partners, services, work}: {blogs: BlogPost[], partners: P
    
     return (
         <BaseLayout>
-            <div className='w-full lg:py-48 py-36  text-white relative px-2 lg:px-4 xl:px-8' id="home">
+            <div className='w-full lg:py-48 py-36  text-white relative p-inline-default' id="home">
                 <div className='lg:w-1/2 lg:text-start text-center'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>"Innovative Software<br /> Solutions for a Digital World"</h1>
                     <p className='lg:text-xl mt-6'>"Empowering businesses with cutting-edge technologies that streamline operations, enhance user experiences, and drive growth. From bespoke software development to scalable cloud solutions, we transform ideas into impactful digital realities."</p>
@@ -34,7 +34,7 @@ function Home({blogs, partners, services, work}: {blogs: BlogPost[], partners: P
                 </div>
                 <img src={HeroImage} alt="" className='absolute w-full h-full top-0 left-0 object-cover -z-10' />
             </div>
-            <div className='w-full mb-8 bg-red-900 text-white px-2 lg:px-4 xl:px-8 lg:py-8 py-4 flex lg:flex-nowrap flex-wrap justify-between items-center'>
+            <div className='w-full mb-8 bg-red-900 text-white p-inline-default lg:py-8 py-4 flex lg:flex-nowrap flex-wrap justify-between items-center'>
                 <h2 className='text-3xl font-bold lg:py-8 py-4 lg:w-auto w-full lg:text-start text-center' id="about">
                     Insights
                 </h2>
@@ -53,7 +53,7 @@ function Home({blogs, partners, services, work}: {blogs: BlogPost[], partners: P
                     </div>
                 </div>
             </div>
-            <div className=' w-full px-2 lg:px-4 xl:px-8 py-8 items-stretch' id="about">
+            <div className=' w-full p-inline-default py-8 items-stretch' id="about">
                 <h2 className='text-3xl font-bold text-center'>
                     Our Services
                 </h2>
@@ -61,7 +61,7 @@ function Home({blogs, partners, services, work}: {blogs: BlogPost[], partners: P
                 <ServiceCarousel services={services} />
 
             </div>
-            <div className='items-center bg-cyan-100 flex px-2 lg:px-4 xl:px-8 py-8 lg:justify-between justify-center flex-wrap lg:flex-nowrap '>
+            <div className='items-center bg-cyan-100 flex p-inline-default py-8 lg:justify-between justify-center flex-wrap lg:flex-nowrap '>
                 <h1 className='text-gray-500 md:text-4xl text-3xl font-bold lg:w-1/3'>Partners</h1>
                 <div className='flex flex-wrap gap-8 lg:justify-normal justify-center'>
                     {partners.map((partner) => <div className='md:w-36 md:h-24 w-24 h-16 '>
@@ -71,7 +71,7 @@ function Home({blogs, partners, services, work}: {blogs: BlogPost[], partners: P
                 </div>
             </div>
 
-            <div className='px-2 lg:px-4 xl:px-8 py-8' id="company">
+            <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
                     Our Work
                 </h2>
@@ -84,7 +84,7 @@ function Home({blogs, partners, services, work}: {blogs: BlogPost[], partners: P
                 <Button className='mx-auto block' >Discover More</Button>
             </Link>
 
-            <div className='px-2 lg:px-4 xl:px-8 py-8' id="company">
+            <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
                     Blog
                 </h2>

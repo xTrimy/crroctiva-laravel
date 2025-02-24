@@ -2,6 +2,7 @@
 
 namespace App\Services\Strapi;
 
+use App\Services\Strapi\Entity\About;
 use App\Services\Strapi\Entity\BlogPost;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
@@ -88,5 +89,11 @@ class StrapiService extends IStrapi{
     {
         $data = $this->get("/works/{$id}?populate=image&populate=content");
         return new Work($data);
+    }
+
+    public function getAbout(): About
+    {
+        $data = $this->get("/about?populate[hero][populate]=*&populate[sections][populate]=*");
+        return new About($data);
     }
 }

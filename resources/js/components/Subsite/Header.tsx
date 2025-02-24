@@ -22,7 +22,7 @@ function Header() {
   return (
     <div className={ 
           (headerTop ? 'py-4 shadow-md' : 'py-8') +
-         ' bg-white flex justify-between items-center w-full px-2 lg:px-4 xl:px-8  fixed z-40 transition-all'}>
+         ' bg-white flex justify-between items-center w-full p-inline-default  fixed z-40 transition-all'}>
         <div className='flex items-center'>
             <img src={Logo} alt='logo' className='h-8' />
             <p className='w-36 text-left'>Lorem ipsum Interiors</p>

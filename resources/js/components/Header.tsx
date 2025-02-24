@@ -20,7 +20,7 @@ function Header() {
     const [sidebarMenuOpen, setSidebarMenuOpen] = useState(false);
     const handleClickScroll = (id: any, e: any) => {
         sidebarMenuOpen && setSidebarFunction(false);
-        if (url === '/') {
+        if (url === '/test') {
             e.preventDefault();
         }else{
             return;
@@ -53,7 +53,7 @@ function Header() {
         <>
             <div className={
                 (headerTop ? 'py-4 shadow-md' : 'py-8') +
-                ' bg-white flex justify-between items-center w-full px-2 lg:px-4 xl:px-8 fixed z-40 transition-all '}>
+                ' bg-white flex justify-between items-center w-full p-inline-default fixed z-40 transition-all '}>
                 <div className='flex items-center'>
                     <div className='ml-4 mr-8 lg:hidden w-8 h-8 bg-transparent rounded-full hover:bg-[#00000033] cursor-pointer transition-all flex justify-center items-center'>
                         <Menu onClick={() => { setSidebarFunction(!sidebarMenuOpen) }}  />
@@ -68,7 +68,7 @@ function Header() {
                                 Home
                             </li>
                         </Link>
-                        <Link href="/" onClick={(e) => handleClickScroll("about", e)} className=' cursor-pointer'>
+                        <Link href="/about" onClick={(e) => handleClickScroll("about", e)} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 About Us
                             </li>

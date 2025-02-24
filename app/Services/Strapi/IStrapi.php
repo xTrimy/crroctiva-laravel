@@ -2,6 +2,7 @@
 
 namespace App\Services\Strapi;
 
+use App\Services\Strapi\Entity\About;
 use App\Services\Strapi\Entity\BlogPost;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
@@ -32,4 +33,5 @@ abstract class IStrapi
     public abstract function getService($id): Service;
 
     public abstract function getWork(int $limit = null): array;
+    public abstract function getAbout(): About;
 }

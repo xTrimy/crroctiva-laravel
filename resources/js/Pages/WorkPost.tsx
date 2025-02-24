@@ -11,7 +11,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 function WorkPost({work}: {work: WorkItem}) {
     return (
         <BaseLayout>
-            <div className='w-full lg:py-48 py-36 text-white relative px-2 lg:px-4 xl:px-8 bg-black' id="home">
+            <div className='w-full lg:py-48 py-36 text-white relative p-inline-default bg-black' id="home">
                 <img src={work.image} alt="" className='absolute w-full h-full top-0 left-0 object-cover opacity-40' />
                 <div className='lg:w-1/2 lg:text-start text-center relative'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>{work.title}</h1>
@@ -19,7 +19,7 @@ function WorkPost({work}: {work: WorkItem}) {
                 </div>
             </div>
 
-            <div className='px-2 lg:px-4 xl:px-8 py-8 text-gray-500 text-center' id="blogPost">
+            <div className='p-inline-default py-8 text-gray-500 text-center' id="blogPost">
                 <BlocksRenderer content={work.content} />
             </div>
 

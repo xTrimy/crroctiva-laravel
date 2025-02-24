@@ -25,6 +25,14 @@ class MainController extends Controller
             'work' => $work
         ]);
     }
+
+    public function about(){
+        $about = $this->strapi_service->getAbout();
+        return Inertia::render('About', [
+            'about' => $about
+        ]);
+    }
+
     public function post($id)
     {
         $blog = $this->strapi_service->getBlogPost($id);

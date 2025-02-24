@@ -4,7 +4,7 @@ import LinkedInLogo from '../assets/svg/LinkedIn.png'
 import TwitterLogo from '../assets/svg/TwitterX.png'
 function Footer() {
   return (
-      <footer className='flex px-2 lg:px-4 xl:px-8 py-8 bg-red-900 mt-12 justify-between lg:flex-nowrap flex-wrap'>
+      <footer className='flex p-inline-default py-8 bg-red-900 mt-12 justify-between lg:flex-nowrap flex-wrap'>
           <div className='lg:w-1/3 w-full'>
               <div className='flex items-center md:justify-normal justify-center'>
                   <img src={Logo} alt='logo' className='h-8' />

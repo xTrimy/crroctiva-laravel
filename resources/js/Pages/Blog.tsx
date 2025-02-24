@@ -16,7 +16,7 @@ import Footer from '@/components/Footer'
 function Home() {
     return (
         <>
-            <div className='w-full lg:py-48 py-36 text-white relative px-2 lg:px-4 xl:px-8' id="home">
+            <div className='w-full lg:py-48 py-36 text-white relative p-inline-default' id="home">
                 <div className='lg:w-1/2 lg:text-start text-center'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>"Innovative Software<br /> Solutions for a Digital World"</h1>
                     <p className='lg:text-xl mt-6'>"Empowering businesses with cutting-edge technologies that streamline operations, enhance user experiences, and drive growth. From bespoke software development to scalable cloud solutions, we transform ideas into impactful digital realities."</p>
@@ -24,7 +24,7 @@ function Home() {
                 <img src={HeroImage} alt="" className='absolute w-full h-full top-0 left-0 object-cover -z-10' />
             </div>
 
-            <div className='px-2 lg:px-4 xl:px-8 py-8' id="company">
+            <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
                     Blog
                 </h2>

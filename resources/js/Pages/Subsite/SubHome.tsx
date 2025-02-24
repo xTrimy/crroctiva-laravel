@@ -43,7 +43,7 @@ function SubHome() {
             </div>
                 <img src={HeroImage} alt="" className='absolute w-full h-full top-0 left-0 object-cover -z-10' />
             </div>
-            <div className='w-full mb-8 bg-red-900 text-white px-2 lg:px-4 xl:px-8 py-8 flex justify-between items-center'>
+            <div className='w-full mb-8 bg-red-900 text-white p-inline-default py-8 flex justify-between items-center'>
                 <h2 className='text-3xl font-bold py-8' id="about">
                     Insights
                 </h2>
@@ -62,7 +62,7 @@ function SubHome() {
                     </div>
                 </div>
             </div>
-            <div className=' w-full px-2 lg:px-4 xl:px-8 py-8 items-stretch' id="about">
+            <div className=' w-full p-inline-default py-8 items-stretch' id="about">
                 <h2 className='text-3xl font-bold text-center'>
                     Our Services
                 </h2>
@@ -128,7 +128,7 @@ function SubHome() {
                 </div>
             
             </div>
-            <div className='items-center bg-cyan-100 flex px-2 lg:px-4 xl:px-8 py-8 justify-between '>
+            <div className='items-center bg-cyan-100 flex p-inline-default py-8 justify-between '>
                 <h1 className='text-gray-500 text-4xl font-bold w-1/3'>Partners</h1>
                 <div className='flex flex-wrap gap-8'>
                     <div className='w-36 h-24 '>
@@ -155,7 +155,7 @@ function SubHome() {
                 </div>
             </div>
           
-            <div className='px-2 lg:px-4 xl:px-8 py-8' id="company">
+            <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
                     Our Work
                 </h2>
@@ -189,7 +189,7 @@ function SubHome() {
             </div>
             <button className='py-4 px-12 hover:bg-red-900 border border-red-900 text-red-900 hover:text-white transition-colors cursor-pointer rounded-md mt-4 mx-auto block'>Discover More</button>
             
-            <div className='px-2 lg:px-4 xl:px-8 py-8' id="company">
+            <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
                     Blog
                 </h2>
@@ -226,7 +226,7 @@ function SubHome() {
             </div>
             <button className='py-4 px-12 hover:bg-red-900 border border-red-900 text-red-900 hover:text-white transition-colors cursor-pointer rounded-md mt-4 mx-auto block'>Discover More Blog Posts</button>
 
-            <footer className='flex  px-2 lg:px-4 xl:px-8 py-8 bg-red-900 mt-12 justify-between'>
+            <footer className='flex  p-inline-default py-8 bg-red-900 mt-12 justify-between'>
                 <div className='w-1/3'>
                     <div className='flex items-center'>
                         <img src={Logo} alt='logo' className='h-8' />
