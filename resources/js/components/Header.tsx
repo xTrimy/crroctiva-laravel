@@ -73,9 +73,9 @@ function Header() {
                                 About Us
                             </li>
                         </Link>
-                        <Link href="/" onClick={(e) => handleClickScroll("company", e)} className=' cursor-pointer'>
+                        <Link href="/blog" onClick={(e) => handleClickScroll("company", e)} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
-                                Our companies
+                                Blog
                             </li>
                         </Link>
                         <Link href="/" onClick={(e) => handleClickScroll("clients", e)} className=' cursor-pointer'>

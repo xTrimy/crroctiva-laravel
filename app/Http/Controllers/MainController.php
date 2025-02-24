@@ -14,15 +14,17 @@ class MainController extends Controller
     }
     public function home()
     {
+        $homeData = $this->strapi_service->getHome();
         $blogs = $this->strapi_service->getBlogPosts(limit: 3);
         $partners = $this->strapi_service->getPartners();
         $services = $this->strapi_service->getServices();
         $work = $this->strapi_service->getWork(3);
         return Inertia::render('Home', [
-            'blogs' => $blogs,
+            'blogs' => $blogs->posts,
             'partners' => $partners,
             'services' => $services,
-            'work' => $work
+            'work' => $work,
+            'homeData' => $homeData
         ]);
     }
 
@@ -30,6 +32,21 @@ class MainController extends Controller
         $about = $this->strapi_service->getAbout();
         return Inertia::render('About', [
             'about' => $about
+        ]);
+    }
+
+    public function blog(Request $request)
+    {
+        $page = $request->page ?? 1;
+        if($page < 1){
+            return redirect()->route('blog');
+        }
+        $blogPosts = $this->strapi_service->getBlogPosts(page: $page);
+        $blogPageData = $this->strapi_service->getBlogPage();
+        return Inertia::render('Blog', [
+            'blogPosts' => $blogPosts->posts,
+            'blogPageData' => $blogPageData,
+            'pagination' => $blogPosts->getPagination()
         ]);
     }
 

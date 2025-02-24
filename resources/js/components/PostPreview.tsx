@@ -6,7 +6,7 @@ function PostPreview({ id, image, text }: { id: number, image: string, text?: st
         text = text.slice(0, 200) + '...'
     }
     return (
-        <div className='lg:w-1/3 max-w-xl w-full p-8 relative bg-cyan-100 rounded-md'>
+        <div className='max-w-xl w-full p-8 relative bg-cyan-100 rounded-md'>
             <Link href={`/post/${id}`}>
                 <div className='w-full xl:h-96 lg:h-72 h-72 overflow-hidden rounded-md bg-black relative'>
                     <div className='w-full h-full flex justify-center items-center text-2xl absolute top-0 left-0 text-white text-bold'>

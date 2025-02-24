@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [MainController::class, 'home']);
-Route::get('/about', [MainController::class, 'about']);
+Route::get('/about', [ MainController::class, 'about']);
+Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 
 
 Route::get('/test', [MainController::class, 'show']);

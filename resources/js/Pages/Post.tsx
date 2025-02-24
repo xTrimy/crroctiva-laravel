@@ -5,7 +5,7 @@ import HeroImage from '../assets/Hero section2.png'
 import 'react-multi-carousel/lib/styles.css';
 import BaseLayout from '@/layouts/BaseLayout'
 import { BlogPost } from '@/types/BlogPost';
-import '../../css/blog.css'
+import '../../css/blog.scss'
 function Post({post}: {post: BlogPost}) {
     return (
         <BaseLayout>

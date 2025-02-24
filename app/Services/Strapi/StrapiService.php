@@ -3,27 +3,34 @@
 namespace App\Services\Strapi;
 
 use App\Services\Strapi\Entity\About;
+use App\Services\Strapi\Entity\BlogPage;
 use App\Services\Strapi\Entity\BlogPost;
+use App\Services\Strapi\Entity\BlogPosts;
+use App\Services\Strapi\Entity\Home;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
 use App\Services\Strapi\Entity\Work;
 use Illuminate\Support\Facades\Http;
 
 class StrapiService extends IStrapi{
-    public function getBlogPosts(int $limit = null): array
+    public function getBlogPosts(int $limit = null, int $page = null): BlogPosts
     {
         $url = "/blog-posts";
+        $query = [];
         if ($limit != null) {
-            $url .= "?pagination[limit]={$limit}";
+            $query[] = "pagination[limit]={$limit}";
         }
-        $data = $this->get($url);
-        $blog_posts = [];
+        if ($page != null) {
+            $query[] = "pagination[page]={$page}";
+        }
+        if (count($query) > 0) {
+            $url .= '?' . implode('&', $query);
+        }
+        $data = $this->get($url, withMetaData: true);
         if ($data == null) {
             return [];
         }
-        foreach ($data as $blog_post) {
-            $blog_posts[] = new BlogPost($blog_post);
-        }
+        $blog_posts = new BlogPosts($data);
         return $blog_posts;
     }
 
@@ -95,5 +102,17 @@ class StrapiService extends IStrapi{
     {
         $data = $this->get("/about?populate[hero][populate]=*&populate[sections][populate]=*");
         return new About($data);
+    }
+
+    public function getHome(): Home
+    {
+        $data = $this->get("/home?populate[hero][populate]=*&populate[Insights][populate]=*");
+        return new Home($data);
+    }
+
+    public function getBlogPage(): BlogPage
+    {
+        $data = $this->get("/blog-page?populate[hero][populate]=*");
+        return new BlogPage($data);
     }
 }
