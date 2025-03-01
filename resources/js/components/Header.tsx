@@ -63,27 +63,27 @@ function Header() {
                 </div>
                 <div className={(sidebarMenuOpen ? 'left-0' : '-left-full') + ' ' + (headerTop ? 'mt-20' : 'mt-28') + ' lg:left-0 lg:max-w-none max-w-96 w-full lg:transition-none transition-all lg:translate-y-0 lg:translate-x-0 lg:mt-0 lg:py-0 py-8 lg:px-0 px-8 text-black lg:relative fixed lg:w-auto lg:h-auto h-screen top-0 lg:bg-transparent bg-white'}>
                     <ul className='flex lg:flex-row flex-col'>
-                        <Link href="/" onClick={()=>{setSidebarMenuOpen(false)}} className=' cursor-pointer'>
+                        <Link href="/" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Home
                             </li>
                         </Link>
-                        <Link href="/about" onClick={()=>{setSidebarMenuOpen(false)}} className=' cursor-pointer'>
+                        <Link href="/about" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 About Us
                             </li>
                         </Link>
-                        <Link href="/services" onClick={()=>{setSidebarMenuOpen(false)}} className=' cursor-pointer'>
+                        <Link href="/services" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Services
                             </li>
                         </Link>
-                        <Link href="/work" onClick={()=>{setSidebarMenuOpen(false)}} className=' cursor-pointer'>
+                        <Link href="/work" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Our Work
                             </li>
                         </Link>
-                        <Link href="/blog" onClick={()=>{setSidebarMenuOpen(false)}} className=' cursor-pointer'>
+                        <Link href="/blog" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Blog
                             </li>
