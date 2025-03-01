@@ -20,7 +20,7 @@ function Pagination({ pagination }: { pagination: PaginationType }) {
                 {
                     Array.from({ length: pagination.pageCount }, (_, i) =>{
                         if(i+1 === page){
-                            return <div key={i} className='mx-1 px-3 py-2 bg-red-900 text-white rounded-md'>{i + 1}</div>
+                            return <div key={i} className='mx-1 px-3 py-2 bg-[#913E49] text-white rounded-md'>{i + 1}</div>
                             }else{
                             return <Link key={i} href={`${url
                                 }?page=${i + 1

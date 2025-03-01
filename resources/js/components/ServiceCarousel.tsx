@@ -2,6 +2,7 @@ import { Service } from '@/types/Service';
 import { Link } from '@inertiajs/react';
 import React from 'react'
 import Carousel from 'react-multi-carousel';
+import ServicePreview from './ServicePreview';
 
 function ServiceCarousel({services}: {services: Service[]}) {
     const responsive = {
@@ -28,22 +29,7 @@ function ServiceCarousel({services}: {services: Service[]}) {
       <div className='mt-8 select-none'>
           <Carousel responsive={responsive} showDots={true} infinite={true} className='py-8 z-20' >
               {services.map((service) => {
-                  if (service.content && service.content.length > 200) {
-                      service.content = service.content.slice(0, 200) + '...'
-                  }
-                  return <div className='w-full px-2' key={service.id}>
-                      <div className='w-full bg-red-900 p-8 rounded-md justify-center items-center'>
-                          <p className='text-white'>{service.name}</p>
-                          <p className='text-white mt-4'>
-                              {service.content}
-                          </p>
-                          <Link href={`/service/${service.id}`}>
-                              <p className='mt-8 text-white cursor-pointer'>
-                                  Discover More
-                              </p>
-                          </Link>
-                      </div>
-                  </div>
+                  return <ServicePreview className='px-2' service={service} key={service.id} />
               })}
           </Carousel>
       </div>

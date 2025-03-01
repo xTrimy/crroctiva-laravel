@@ -2,7 +2,7 @@ import { AboutPage } from '@/types/AboutPage'
 import BaseLayout from '@/layouts/BaseLayout'
 function About({about}: {about?: AboutPage}) {
     return (
-        <BaseLayout>
+        <>
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default bg-black' id="home">
                 <img src={about?.hero.image} alt="" className='absolute w-full h-full top-0 left-0 select-none pointer-events-none object-cover opacity-40' />
                 <div className='lg:w-1/2 lg:text-start text-center relative'>
@@ -26,8 +26,9 @@ function About({about}: {about?: AboutPage}) {
                     ))
                 }
             </div>
-        </BaseLayout>
+        </>
     )
 }
+About.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
 
 export default About

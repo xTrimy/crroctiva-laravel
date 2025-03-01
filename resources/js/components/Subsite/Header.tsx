@@ -35,7 +35,7 @@ function Header() {
         </div>
         <div className='flex items-center'>
             <a href='#' target='_blank' className='mr-4'>
-                <button className='py-4 px-6 bg-red-900 text-white cursor-pointer rounded-md'>Contact Us</button>
+                <button className='py-4 px-6 bg-[#913E49] text-white cursor-pointer rounded-md'>Contact Us</button>
             </a>
         </div>
 

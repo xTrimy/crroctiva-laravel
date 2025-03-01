@@ -10,7 +10,7 @@ import { Service } from '@/types/Service';
 import NoImage from '../assets/no-image.jpeg'
 function Post({ service }: {service: Service}) {
     return (
-        <BaseLayout>
+        <>
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default' id="home">
                 <div className='lg:w-1/2 lg:text-start text-center'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>{service.name}</h1>
@@ -18,15 +18,16 @@ function Post({ service }: {service: Service}) {
                 </div>
                 <img src={HeroImage} alt="" className='absolute w-full h-full top-0 left-0 object-cover -z-10' />
             </div>
-            <div className='flex lg:flex-nowrap flex-wrap flex-row-reverse justify-center lg:justify-between w-full p-inline-default py-8 items-stretch' id="about">
-                <div className='lg:w-1/2 w-2/3 max-w-md lg:h-auto lg:mb-0 mb-9'>
-                    <div className='object-contain relative overflow-hidden w-full h-full'>
-                        <img src={service.image ?? NoImage} alt="" className='object-contain lg:object-right w-full h-full right-0' />
-                    </div>
-                </div>
-                <div className=' lg:w-1/2 max-w-xl w-full lg:text-start text-center'>
-                    <p className='mt-8'>{service.content}</p>
-                </div>
+            <div className='py-8 p-inline-default flex flex-col gap-12 lg:gap-8'>
+                        <div className='flex gap-2 lg:gap-8 justify-center text-center lg:text-start lg:justify-between lg:odd:flex-row-reverse flex-wrap lg:flex-nowrap'>
+                            <div className='w-[100%] lg:w-[500px] xl:w-[600px] 2xl:w-[600px] h-[300px] lg:h-[400px] shrink-0 rounded-lg overflow-hidden'>
+                                <img src={service.image??NoImage} className='w-full h-full object-cover object-center' alt="" />
+                            </div>
+                            <div>
+                                <p className='text-center lg:text-justify max-w-6xl'>{service.content}</p>
+                            </div>
+
+                        </div>
             </div>
             <div className='grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 w-full grid p-inline-default gap-4'>
           
@@ -42,8 +43,10 @@ function Post({ service }: {service: Service}) {
             </div>
       
 
-        </BaseLayout>
+        </>
     )
 }
+
+Post.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
 
 export default Post

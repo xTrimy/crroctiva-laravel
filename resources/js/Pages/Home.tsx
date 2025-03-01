@@ -23,38 +23,57 @@ import ServiceCarousel from '@/components/ServiceCarousel';
 import WorkPreview from '@/components/WorkPreview';
 import { WorkItem } from '@/types/WorkItem';
 import { HomePage } from '@/types/HomePage';
+import { motion } from "motion/react"
+import AnimatedInsightElement from '@/components/AnimatedInsightElement';
+
 function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[], partners: Partner[], services: Service[], work: WorkItem[], homeData: HomePage}) {
    
     return (
-        <BaseLayout>
+        <>
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default bg-black' id="home">
                 <img src={homeData?.hero.image} alt="" className='absolute w-full h-full top-0 left-0 select-none pointer-events-none object-cover opacity-40' />
                 <div className='lg:w-1/2 lg:text-start text-center relative'>
-                    <h1 className='lg:text-5xl text-3xl font-bold'>{homeData?.hero.title}</h1>
-                    <p className='lg:text-xl mt-6'>{homeData?.hero.content}</p>
+                    <motion.h1 variants={{ hidden: {opacity:0, y:'100%'}, visible: {opacity:1, y:0, transition:{delay:0.5}} }} initial="hidden"
+                    whileInView="visible" viewport={{ once: true }}
+                    className='lg:text-5xl text-3xl font-bold'>{homeData?.hero.title}</motion.h1>
+                    <motion.p 
+                    variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0, transition: { delay: 0.8 } }, }} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                    className='lg:text-xl mt-6'>{homeData?.hero.content}</motion.p>
                 </div>
             </div>
-            <div className='w-full mb-8 bg-red-900 text-white p-inline-default lg:py-8 py-4 flex lg:flex-nowrap flex-wrap justify-between items-center'>
+            <div className='w-full mb-8 bg-[#913E49] text-white p-inline-default lg:py-8 py-4 flex lg:flex-nowrap flex-wrap justify-between items-center'>
                 <h2 className='text-3xl font-bold lg:py-8 py-4 lg:w-auto w-full lg:text-start text-center' id="about">
                     Insights
                 </h2>
-                <div className='flex lg:justify-normal justify-center lg:w-auto w-full sm:flex-nowrap flex-wrap'>
+                <motion.div 
+                variants={{ 
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren:1.5 } },
+                 }}
+                initial="hidden"
+                whileInView="visible" viewport={{ once: true }}
+                className='flex lg:justify-normal justify-center lg:w-auto w-full sm:flex-nowrap flex-wrap'>
                     {homeData?.insights.map((insight) => 
-                        <div key={insight.id} className='border-r-1 border-r-white p-4 text-center sm:w-auto w-full'>
+                        <motion.div variants={{ hidden: { opacity: 0, y:'100%' }, visible:{opacity:1, y: 0} }} key={insight.id} className='border-r-1 border-r-white p-4 text-center sm:w-auto w-full'>
                             <p className='text-sm'>{insight.title}</p>
-                            <div className='text-3xl font-bold mt-2'>{insight.number}+</div>
-                        </div>)}
-                </div>
+                            <AnimatedInsightElement number={insight.number} />
+                        </motion.div>)}
+                </motion.div>
             </div>
             <div className=' w-full p-inline-default py-8 items-stretch' id="about">
-                <h2 className='text-3xl font-bold text-center'>
+                <motion.h2
+                    variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
+                    whileInView="visible"
+                    className='text-3xl font-bold text-center'>
                     Our Services
-                </h2>
-                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
+                </motion.h2>
+                <motion.p variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
+                    whileInView="visible"
+                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</motion.p>
                 <ServiceCarousel services={services} />
 
             </div>
-            <div className='items-center bg-cyan-100 flex p-inline-default py-8 lg:justify-between justify-center flex-wrap lg:flex-nowrap '>
+            <div className='items-center bg-[#D9F9F3] flex p-inline-default py-8 lg:justify-between justify-center flex-wrap lg:flex-nowrap '>
                 <h1 className='text-gray-500 md:text-4xl text-3xl font-bold lg:w-1/3'>Partners</h1>
                 <div className='flex flex-wrap gap-8 lg:justify-normal justify-center'>
                     {partners.map((partner) => <div className='md:w-36 md:h-24 w-24 h-16 '>
@@ -65,36 +84,79 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
             </div>
 
             <div className='p-inline-default py-8' id="company">
-                <h2 className='text-3xl font-bold text-center'>
+                <motion.h2 
+                    variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
+                    whileInView="visible"
+                className='text-3xl font-bold text-center'>
                     Our Work
-                </h2>
-                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
-                <div className='flex gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center'>
-                    { work.map((work) => <WorkPreview work={work} key={work.id} />)}
-                </div>
+                </motion.h2>
+                <motion.p variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
+                    whileInView="visible" 
+                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</motion.p>
+                <motion.div
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { staggerChildren: 0.2, duration: 1.5 } },
+                    }}
+                    initial="hidden"
+                    whileInView="visible" viewport={{ once: true, margin: "-100px" }}
+                    className={(work.length >= 3 ? "lg:grid-cols-3" : (work.length == 2?"lg:grid-cols-2":""))+' grid grid-cols-1 gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center'}>
+                    { work.map((work) =>
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0, y: '100%' },
+                                visible: { opacity: 1, y: 0, transition: { duration: 1.5 } },
+                            }}
+                            key={work.id}>
+                        <WorkPreview work={work} />
+                        </motion.div>)}
+                </motion.div>
             </div>
             <Link href="/work" >
                 <Button className='mx-auto block' >Discover More</Button>
             </Link>
 
             <div className='p-inline-default py-8' id="company">
-                <h2 className='text-3xl font-bold text-center'>
+                <motion.h2
+                    variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
+                    whileInView="visible"
+                    className='text-3xl font-bold text-center'>
                     Blog
-                </h2>
-                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
-                <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center lg:w-full max-w-xl lg:max-w-full mx-auto'>
+                </motion.h2>
+                <motion.p variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
+                    whileInView="visible"
+                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</motion.p>
+                <motion.div
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { staggerChildren: 0.2, duration:1.5} },
+                    }}
+                    initial="hidden"
+                    whileInView="visible" viewport={{ once: true, margin: "-100px" }}
+                    className={(blogs.length >= 3 ? "lg:grid-cols-3" : (blogs.length == 2 ? "lg:grid-cols-2" : "")) +' grid grid-cols-1 gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center lg:w-full max-w-xl lg:max-w-full mx-auto'}>
                     {
                     blogs.map(
-                        (blog) => <PostPreview id={blog.id} image={blog.previewImage} key={blog.id} text={convert(blog.body, { selectors: [{ selector: 'img', format: 'skip' }]})} />
+                        (blog) => 
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0,y:'100%' },
+                                visible: { opacity: 1, y:0, transition: { duration: 1.5 } },
+                            }}
+                        key={blog.id}>
+                            <PostPreview
+                            
+                            id={blog.id} image={blog.previewImage} text={convert(blog.body, { selectors: [{ selector: 'img', format: 'skip' }] })} />
+                        </motion.div>
                     )}
-                </div>
+                </motion.div>
             </div>
             <Link href="/blog" >
                 <Button className='mx-auto block' >Discover More Blog Posts</Button>
             </Link>
 
-        </BaseLayout>
+        </>
     )
 }
+Home.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
 
 export default Home

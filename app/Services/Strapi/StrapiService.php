@@ -9,7 +9,10 @@ use App\Services\Strapi\Entity\BlogPosts;
 use App\Services\Strapi\Entity\Home;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
+use App\Services\Strapi\Entity\ServicesPage;
 use App\Services\Strapi\Entity\Work;
+use App\Services\Strapi\Entity\WorkItems;
+use App\Services\Strapi\Entity\WorkPage;
 use Illuminate\Support\Facades\Http;
 
 class StrapiService extends IStrapi{
@@ -28,7 +31,7 @@ class StrapiService extends IStrapi{
         }
         $data = $this->get($url, withMetaData: true);
         if ($data == null) {
-            return [];
+            return new BlogPosts([]);
         }
         $blog_posts = new BlogPosts($data);
         return $blog_posts;
@@ -75,21 +78,27 @@ class StrapiService extends IStrapi{
         return new Service($data);
     }
 
-    public function getWork(int $limit = null): array
+
+    public function getWork(int $limit = null, int $page = null): WorkItems
     {
-        $url = "/works?fields[0]=title&populate=image";
+        $url = "/works";
+        $query = [];
+        $query[] = 'populate=image';
         if ($limit != null) {
-            $url .= "&pagination[limit]={$limit}";
+            $query[] = "pagination[limit]={$limit}";
         }
-        $data = $this->get($url);
-        $works = [];
+        if ($page != null) {
+            $query[] = "pagination[page]={$page}";
+        }
+        if (count($query) > 0) {
+            $url .= '?' . implode('&', $query);
+        }
+        $data = $this->get($url, withMetaData: true);
         if ($data == null) {
-            return [];
+            return new WorkItems([]);
         }
-        foreach ($data as $work) {
-            $works[] = new Work($work);
-        }
-        return $works;
+        $blog_posts = new WorkItems($data);
+        return $blog_posts;
     }
 
     public function getWorkSingle($id): Work
@@ -114,5 +123,17 @@ class StrapiService extends IStrapi{
     {
         $data = $this->get("/blog-page?populate[hero][populate]=*");
         return new BlogPage($data);
+    }
+
+    public function getWorkPage(): WorkPage
+    {
+        $data = $this->get("/our-work-page?populate[hero][populate]=*");
+        return new WorkPage($data);
+    }
+
+    public function getServicesPage(): ServicesPage
+    {
+        $data = $this->get("/services-page?populate[hero][populate]=*");
+        return new ServicesPage($data);
     }
 }

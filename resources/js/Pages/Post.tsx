@@ -8,7 +8,7 @@ import { BlogPost } from '@/types/BlogPost';
 import '../../css/blog.scss'
 function Post({post}: {post: BlogPost}) {
     return (
-        <BaseLayout>
+        <>
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default' id="home">
                 <div className='lg:w-1/2 lg:text-start text-center'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>"Innovative Software<br /> Solutions for a Digital World"</h1>
@@ -21,8 +21,10 @@ function Post({post}: {post: BlogPost}) {
                 <div dangerouslySetInnerHTML={{ __html:  post.body }} className='text-center' />
             </div>
 
-        </BaseLayout>
+        </>
     )
 }
+
+Post.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
 
 export default Post

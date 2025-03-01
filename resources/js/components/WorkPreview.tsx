@@ -6,7 +6,7 @@ import React from 'react'
 
 function WorkPreview({work}: {work: WorkItem}) {
   return (
-      <div className='lg:w-1/3 w-full max-w-xl h-72 xl:py-56 lg:py-36 relative group overflow-hidden rounded-md cursor-pointer'>
+      <div className='mx-auto w-full max-w-xl h-72 xl:py-56 lg:py-36 relative group overflow-hidden rounded-md cursor-pointer'>
           <Link href={`/work/${work.id}`}>
               <div className='bg-black w-full h-full top-0 left-0 absolute'></div>
               <img src={work.image} className='object-cover  opacity-50  group-hover:scale-105 group-hover:opacity-75 transition-all rounded-md absolute w-full h-full top-0 right-0' alt="" />

@@ -39,11 +39,11 @@ function SubHome() {
             <div className='w-1/2'>
                     <h1 className='text-5xl font-bold'>"Innovative Software<br/> Solutions for a Digital World"</h1>
                     <p className='text-xl mt-6'>"Empowering businesses with cutting-edge technologies that streamline operations, enhance user experiences, and drive growth. From bespoke software development to scalable cloud solutions, we transform ideas into impactful digital realities."</p>
-                    <button className='py-4 px-6 bg-red-900 text-white cursor-pointer rounded-md mt-12'>Discover More</button>
+                    <button className='py-4 px-6 bg-[#913E49] text-white cursor-pointer rounded-md mt-12'>Discover More</button>
             </div>
                 <img src={HeroImage} alt="" className='absolute w-full h-full top-0 left-0 object-cover -z-10' />
             </div>
-            <div className='w-full mb-8 bg-red-900 text-white p-inline-default py-8 flex justify-between items-center'>
+            <div className='w-full mb-8 bg-[#913E49] text-white p-inline-default py-8 flex justify-between items-center'>
                 <h2 className='text-3xl font-bold py-8' id="about">
                     Insights
                 </h2>
@@ -70,7 +70,7 @@ function SubHome() {
                 <div className='mt-8 select-none'>
                     <Carousel responsive={responsive} showDots={true} infinite={true}  className='py-8 z-20' >
                     <div className='w-full px-2'>
-                        <div className='w-full bg-red-900 p-8 rounded-md justify-center items-center'>
+                        <div className='w-full bg-[#913E49] p-8 rounded-md justify-center items-center'>
                             <p className='text-white'>Antivirus solutions</p>
                             <p className='text-white mt-4'>
                                     Become Mobile And Accessible With A Smart And Flexible Wireless Network Option For Your Company’s Indoor And Outdoor Spaces – Even your Staff’s Commuter Buses. 
@@ -81,7 +81,7 @@ function SubHome() {
                         </div>
                     </div>
                         <div className='w-full px-2'>
-                            <div className='w-full bg-red-900 p-8 rounded-md justify-center items-center'>
+                            <div className='w-full bg-[#913E49] p-8 rounded-md justify-center items-center'>
                                 <p className='text-white'>Antivirus solutions</p>
                                 <p className='text-white mt-4'>
                                     Become Mobile And Accessible With A Smart And Flexible Wireless Network Option For Your Company’s Indoor And Outdoor Spaces – Even your Staff’s Commuter Buses.
@@ -92,7 +92,7 @@ function SubHome() {
                             </div>
                         </div>
                         <div className='w-full px-2'>
-                            <div className='w-full bg-red-900 p-8 rounded-md justify-center items-center'>
+                            <div className='w-full bg-[#913E49] p-8 rounded-md justify-center items-center'>
                                 <p className='text-white'>Antivirus solutions</p>
                                 <p className='text-white mt-4'>
                                     Become Mobile And Accessible With A Smart And Flexible Wireless Network Option For Your Company’s Indoor And Outdoor Spaces – Even your Staff’s Commuter Buses.
@@ -103,7 +103,7 @@ function SubHome() {
                             </div>
                         </div>
                         <div className='w-full px-2'>
-                            <div className='w-full bg-red-900 p-8 rounded-md justify-center items-center'>
+                            <div className='w-full bg-[#913E49] p-8 rounded-md justify-center items-center'>
                                 <p className='text-white'>Antivirus solutions</p>
                                 <p className='text-white mt-4'>
                                     Become Mobile And Accessible With A Smart And Flexible Wireless Network Option For Your Company’s Indoor And Outdoor Spaces – Even your Staff’s Commuter Buses.
@@ -114,7 +114,7 @@ function SubHome() {
                             </div>
                         </div>
                         <div className='w-full px-2'>
-                            <div className='w-full bg-red-900 p-8 rounded-md justify-center items-center'>
+                            <div className='w-full bg-[#913E49] p-8 rounded-md justify-center items-center'>
                                 <p className='text-white'>Antivirus solutions</p>
                                 <p className='text-white mt-4'>
                                     Become Mobile And Accessible With A Smart And Flexible Wireless Network Option For Your Company’s Indoor And Outdoor Spaces – Even your Staff’s Commuter Buses.
@@ -128,7 +128,7 @@ function SubHome() {
                 </div>
             
             </div>
-            <div className='items-center bg-cyan-100 flex p-inline-default py-8 justify-between '>
+            <div className='items-center bg-[#D9F9F3] flex p-inline-default py-8 justify-between '>
                 <h1 className='text-gray-500 text-4xl font-bold w-1/3'>Partners</h1>
                 <div className='flex flex-wrap gap-8'>
                     <div className='w-36 h-24 '>
@@ -187,7 +187,7 @@ function SubHome() {
                     </div>
                 </div>
             </div>
-            <button className='py-4 px-12 hover:bg-red-900 border border-red-900 text-red-900 hover:text-white transition-colors cursor-pointer rounded-md mt-4 mx-auto block'>Discover More</button>
+            <button className='py-4 px-12 hover:bg-[#913E49] border border-red-900 text-red-900 hover:text-white transition-colors cursor-pointer rounded-md mt-4 mx-auto block'>Discover More</button>
             
             <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
@@ -195,7 +195,7 @@ function SubHome() {
                 </h2>
                 <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
                 <div className='flex gap-4 mt-4'>
-                    <div className='w-1/3 p-8 relative bg-cyan-100 rounded-md'>
+                    <div className='w-1/3 p-8 relative bg-[#D9F9F3] rounded-md'>
                         <div className='w-full h-96'>
                             <img src={CompanyFinanceImage} className='object-cover rounded-md w-full h-full' alt="" />
                         </div>
@@ -204,7 +204,7 @@ function SubHome() {
                             <p className='mt-4 cursor-pointer hover:underline'>Read More</p>
                         </div>
                     </div>
-                    <div className='w-1/3 p-8 relative bg-cyan-100 rounded-md'>
+                    <div className='w-1/3 p-8 relative bg-[#D9F9F3] rounded-md'>
                         <div className='w-full h-96'>
                             <img src={CompanyITImage} className='object-cover rounded-md w-full h-full' alt="" />
                         </div>
@@ -213,7 +213,7 @@ function SubHome() {
                             <p className='mt-4 cursor-pointer hover:underline'>Read More</p>
                         </div>
                     </div>
-                    <div className='w-1/3 p-8 relative bg-cyan-100 rounded-md'>
+                    <div className='w-1/3 p-8 relative bg-[#D9F9F3] rounded-md'>
                         <div className='w-full h-96'>
                             <img src={ThirdCompanyImage} className='object-cover rounded-md w-full h-full' alt="" />
                         </div>
@@ -224,9 +224,9 @@ function SubHome() {
                     </div>
                 </div>
             </div>
-            <button className='py-4 px-12 hover:bg-red-900 border border-red-900 text-red-900 hover:text-white transition-colors cursor-pointer rounded-md mt-4 mx-auto block'>Discover More Blog Posts</button>
+            <button className='py-4 px-12 hover:bg-[#913E49] border border-red-900 text-red-900 hover:text-white transition-colors cursor-pointer rounded-md mt-4 mx-auto block'>Discover More Blog Posts</button>
 
-            <footer className='flex  p-inline-default py-8 bg-red-900 mt-12 justify-between'>
+            <footer className='flex  p-inline-default py-8 bg-[#913E49] mt-12 justify-between'>
                 <div className='w-1/3'>
                     <div className='flex items-center'>
                         <img src={Logo} alt='logo' className='h-8' />

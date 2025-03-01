@@ -22,7 +22,7 @@ import { PaginationType } from '@/types/PaginationType'
 import Pagination from '@/components/Pagination'
 function Blog({blogPageData, blogPosts, pagination}: {blogPageData: BlogPage, blogPosts: BlogPost[], pagination: PaginationType}) {
     return (
-        <BaseLayout>
+        <>
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default bg-black' id="home">
                 <img src={blogPageData?.hero.image} alt="" className='absolute w-full h-full top-0 left-0 select-none pointer-events-none object-cover opacity-40' />
                 <div className='lg:w-1/2 lg:text-start text-center relative'>
@@ -46,8 +46,10 @@ function Blog({blogPageData, blogPosts, pagination}: {blogPageData: BlogPage, bl
                 </div>
             </div>
             <Pagination pagination={pagination} />
-        </BaseLayout>
+        </>
     )
 }
+
+Blog.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
 
 export default Blog

@@ -63,26 +63,32 @@ function Header() {
                 </div>
                 <div className={(sidebarMenuOpen ? 'left-0' : '-left-full') + ' ' + (headerTop ? 'mt-20' : 'mt-28') + ' lg:left-0 lg:max-w-none max-w-96 w-full lg:transition-none transition-all lg:translate-y-0 lg:translate-x-0 lg:mt-0 lg:py-0 py-8 lg:px-0 px-8 text-black lg:relative fixed lg:w-auto lg:h-auto h-screen top-0 lg:bg-transparent bg-white'}>
                     <ul className='flex lg:flex-row flex-col'>
-                        <Link href="/" onClick={(e) => handleClickScroll("home", e)} className=' cursor-pointer'>
+                        <Link href="/" className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Home
                             </li>
                         </Link>
-                        <Link href="/about" onClick={(e) => handleClickScroll("about", e)} className=' cursor-pointer'>
+                        <Link href="/about" className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 About Us
                             </li>
                         </Link>
-                        <Link href="/blog" onClick={(e) => handleClickScroll("company", e)} className=' cursor-pointer'>
+                        <Link href="/services" className=' cursor-pointer'>
+                            <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
+                                Services
+                            </li>
+                        </Link>
+                        <Link href="/work" className=' cursor-pointer'>
+                            <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
+                                Our Work
+                            </li>
+                        </Link>
+                        <Link href="/blog" className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Blog
                             </li>
                         </Link>
-                        <Link href="/" onClick={(e) => handleClickScroll("clients", e)} className=' cursor-pointer'>
-                            <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
-                                FAQs
-                            </li>
-                        </Link>
+                        
                     </ul>
 
 
@@ -93,7 +99,7 @@ function Header() {
                         <DialogTrigger> <div className='flex items-center'>
                             <button
                                 onClick={() => { }}
-                                className={` bg-red-900 text-white lg:py-4 lg:px-6 px-6 py-2 text-nowrap cursor-pointer rounded-md
+                                className={` bg-[#913E49] text-white lg:py-4 lg:px-6 px-6 py-2 text-nowrap cursor-pointer rounded-md
       hover:bg-white group hover:text-red-900 group-hover:text-red-900 group-hover:bg-white border-2 border-red-900 transition-all
 
       `}>
