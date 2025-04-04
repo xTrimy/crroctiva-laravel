@@ -38,6 +38,7 @@
         "@strapi/blocks-react-renderer": "^1.0.2",
         "@tailwindcss/vite": "^4.0.2",
         "@types/node": "^22.13.0",
+        "atropos": "^2.0.2",
         "autoprefixer": "^10.4.20",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
@@ -51,6 +52,7 @@
         "react-router": "^7.1.5",
         "react-spinners": "^0.15.0",
         "tailwind-merge": "^3.0.1",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "ziggy-js": "^2.5.2"
     }
 }

@@ -11,18 +11,21 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Menu } from 'lucide-react';
+import { ArrowDown, ChevronDown, Menu } from 'lucide-react';
 // import { NavLink, useLocation } from 'react-router';
 import { Link, usePage } from '@inertiajs/react'
+import { Service } from '@/types/Service';
 function Header() {
     const { url, component } = usePage()
+    const { navbar_services } = usePage<{ navbar_services: Service[] }>().props
+
     const [headerTop, setHeaderTop] = useState(false);
     const [sidebarMenuOpen, setSidebarMenuOpen] = useState(false);
     const handleClickScroll = (id: any, e: any) => {
         sidebarMenuOpen && setSidebarFunction(false);
         if (url === '/test') {
             e.preventDefault();
-        }else{
+        } else {
             return;
         }
         const element = document.getElementById(id);
@@ -56,39 +59,57 @@ function Header() {
                 ' bg-white flex justify-between items-center w-full p-inline-default fixed z-40 transition-all '}>
                 <div className='flex items-center'>
                     <div className='ml-4 mr-8 lg:hidden w-8 h-8 bg-transparent rounded-full hover:bg-[#00000033] cursor-pointer transition-all flex justify-center items-center'>
-                        <Menu onClick={() => { setSidebarFunction(!sidebarMenuOpen) }}  />
+                        <Menu onClick={() => { setSidebarFunction(!sidebarMenuOpen) }} />
                     </div>
                     <img src={Logo} alt='logo' className='h-8' />
                     <p className='w-36 text-left'>Lorem ipsum Interiors</p>
                 </div>
                 <div className={(sidebarMenuOpen ? 'left-0' : '-left-full') + ' ' + (headerTop ? 'mt-20' : 'mt-28') + ' lg:left-0 lg:max-w-none max-w-96 w-full lg:transition-none transition-all lg:translate-y-0 lg:translate-x-0 lg:mt-0 lg:py-0 py-8 lg:px-0 px-8 text-black lg:relative fixed lg:w-auto lg:h-auto h-screen top-0 lg:bg-transparent bg-white'}>
                     <ul className='flex lg:flex-row flex-col'>
-                        <Link href="/" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
+                        <Link href="/" onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Home
                             </li>
                         </Link>
-                        <Link href="/about" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
+                        <Link href="/about" onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 About Us
                             </li>
                         </Link>
-                        <Link href="/services" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
-                            <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
-                                Services
-                            </li>
-                        </Link>
-                        <Link href="/work" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
+                        <li className='relative mr-8'>
+                            <button tabIndex={-1} className='group text-left w-full'>
+                                <Link href="/services" onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer lg:pointer-events-auto pointer-events-none'>
+                                    <div className='py-2 px-4 bg-transparent flex items-center gap-2 hover:bg-[#00000033] rounded-md transition-colors'>
+                                        <p>Services</p> <ChevronDown size={15} />
+                                    </div>
+                                </Link>
+                                <ul className='lg:absolute top-full group-hover:border-b group-focus:border-b lg:group-hover:border-b-0 lg:group-focus:border-b-0 border-gray-400 overflow-hidden max-h-0 group-hover:max-h-max group-focus:max-h-max transition-all p-0 lg:rounded-md lg:bg-gray-200 lg:shadow-md lg:text-center group-hover:p-4 group-focus:p-4 left-1/2 lg:-translate-x-1/2'>
+                                    {navbar_services.map((service) => (
+                                        <Link href={`/service/${service.id}`} key={service.id} onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer'>
+                                            <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] whitespace-nowrap rounded-md transition-colors'>
+                                                {service.name}
+                                            </li>
+                                        </Link>
+                                    ))}
+                                    <Link href="/services" onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer lg:hidden'>
+                                        <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] whitespace-nowrap rounded-md transition-colors'>
+                                            All Services
+                                        </li>
+                                    </Link>
+                                </ul>
+                            </button>
+                        </li>
+                        <Link href="/work" onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Our Work
                             </li>
                         </Link>
-                        <Link href="/blog" onClick={()=>{setSidebarFunction(false)}} className=' cursor-pointer'>
+                        <Link href="/blog" onClick={() => { setSidebarFunction(false) }} className=' cursor-pointer'>
                             <li className='py-2 px-4 bg-transparent hover:bg-[#00000033] mr-8 rounded-md transition-colors'>
                                 Blog
                             </li>
                         </Link>
-                        
+
                     </ul>
 
 
@@ -139,9 +160,9 @@ function Header() {
                 </div>
             </div>
             <div
-            onClick={() => { setSidebarFunction(false) }}
-            className={(sidebarMenuOpen ? 'block backdrop-blur-md' : 'hidden backdrop-blur-0') + ' w-full h-full fixed bg-[#000000AA]  delay-75 transition-all top-0 left-0 z-30'}></div>
-            </>
+                onClick={() => { setSidebarFunction(false) }}
+                className={(sidebarMenuOpen ? 'block backdrop-blur-md' : 'hidden backdrop-blur-0') + ' w-full h-full fixed bg-[#000000AA]  delay-75 transition-all top-0 left-0 z-30'}></div>
+        </>
     )
 }
 

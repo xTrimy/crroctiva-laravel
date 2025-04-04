@@ -16,7 +16,13 @@ use App\Services\Strapi\Entity\WorkPage;
 use Illuminate\Support\Facades\Http;
 
 class StrapiService extends IStrapi{
-    public function getBlogPosts(int $limit = null, int $page = null): BlogPosts
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function getBlogPosts(int|null $limit = null, int|null $page = null): BlogPosts
     {
         $url = "/blog-posts";
         $query = [];
@@ -42,7 +48,7 @@ class StrapiService extends IStrapi{
         return new BlogPost($this->get( '/blog-posts/' . $id));
     }
 
-    public function getPartners(int $limit = null): array
+    public function getPartners(int|null $limit = null): array
     {
         $data = $this->get('/partners?populate=image');
         $partners = [];
@@ -55,7 +61,7 @@ class StrapiService extends IStrapi{
         return $partners;    
     }
 
-    public function getServices(int $limit = null): array
+    public function getServices(int|null $limit = null): array
     {
         $url = "/services";
         if ($limit != null) {
@@ -79,7 +85,7 @@ class StrapiService extends IStrapi{
     }
 
 
-    public function getWork(int $limit = null, int $page = null): WorkItems
+    public function getWork(int|null $limit = null, int|null $page = null): WorkItems
     {
         $url = "/works";
         $query = [];

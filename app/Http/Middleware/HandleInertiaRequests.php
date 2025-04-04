@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\Strapi\StrapiService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
-
 class HandleInertiaRequests extends Middleware
 {
     /**
@@ -35,8 +35,10 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $strapi = new StrapiService();
+        $services = $strapi->getServices(5);
         return array_merge(parent::share($request), [
-            //
+            'navbar_services' => $services,
         ]);
     }
 }

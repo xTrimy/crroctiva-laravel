@@ -1,8 +1,13 @@
+import { Link } from '@inertiajs/react';
 import Logo from '../assets/seat.png';
 import FacebookLogo from '../assets/svg/Facebook.png'
 import LinkedInLogo from '../assets/svg/LinkedIn.png'
 import TwitterLogo from '../assets/svg/TwitterX.png'
+import { useRoute } from 'ziggy-js';
+
 function Footer() {
+const route = useRoute();
+
   return (
       <footer className='flex p-inline-default py-8 bg-[#913E49] mt-12 justify-between lg:flex-nowrap flex-wrap'>
           <div className='lg:w-1/3 w-full'>
@@ -18,43 +23,63 @@ function Footer() {
           <div className='lg:pl-8 flex gap-8 lg:mt-0 mt-8 md:flex-nowrap flex-wrap justify-center md:justify-normal w-full md:w-auto'>
               <ul className='block md:w-auto w-full text-center md:text-start'>
                   <li className='text-white text-lg'>Links</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>Home</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>About Us</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>Our Companies</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>FAQs</li>
+                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
+                    <Link href={route('home')}>
+                        Home
+                    </Link>
+                  </li>
+                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
+                    <Link href={route('about')}>
+                        About Us
+                    </Link>
+                    </li>
+                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
+                    <Link href={route('services')}>
+                        Services
+                    </Link>
+                  </li>
+                    <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
+                        <Link href={route('work')}>
+                            Our Work
+                        </Link>
+                    </li>
+                    <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
+                        <Link href={route('blog')}>
+                            Blog
+                        </Link>
+                    </li>
               </ul>
               <ul className='block md:w-auto w-full text-center md:text-start'>
                   <li className='text-white text-lg'>Our Companies</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>Crroctiva financial</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>Crroctiva Software</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>Crroctiva Hardware</li>
-                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>FAQs</li>
-              </ul>
-              <ul className='block md:w-auto w-full text-center md:text-start'>
-                <li className='text-white text-lg'>
-                    <a href="#">Location</a>
-                </li>
                   <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                    <a href="#">Location Link</a>
-                  </li>
+                      <a href='#'>Crroctiva financial</a>
+                    </li>
                   <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                    <a href="#">Phone number</a>
-                  </li>
+                      <a href='#'>Crroctiva Software</a>
+                    </li>
+                  <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
+                      <a href='#'>Crroctiva Hardware</a>
+                    </li>
               </ul>
-              
            
               <hr className='md:hidden block w-full border-red-500 opacity-50' />
           </div>
           <div className='flex gap-4 lg:self-auto self-end md:w-auto w-full md:mt-0 mt-8 md:justify-normal justify-center'>
               {/* social media links */}
               <div>
-                  <img src={LinkedInLogo} alt="" className='lg:w-auto lg:h-auto w-8 h-8' />
+                <a href="#">
+                    <img src={LinkedInLogo} alt="" className='lg:w-auto lg:h-auto w-8 h-8' />
+                </a>
               </div>
               <div>
-                  <img src={FacebookLogo} alt="" className='lg:w-auto lg:h-auto w-8 h-8' />
+                  <a href="#">
+                      <img src={FacebookLogo} alt="" className='lg:w-auto lg:h-auto w-8 h-8' />
+                  </a>
               </div>
               <div>
-                  <img src={TwitterLogo} alt="" className='lg:w-auto lg:h-auto w-8 h-8' />
+                  <a href="#">
+                      <img src={TwitterLogo} alt="" className='lg:w-auto lg:h-auto w-8 h-8' />
+                  </a>
               </div>
           </div>
       </footer>
