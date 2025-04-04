@@ -17,7 +17,7 @@ Route::get('/post/{id}', [MainController::class, 'post']);
 Route::get('/service/{id}', [ MainController::class, 'service']);
 Route::get('/work/{id}', [MainController::class, 'workItem']);
 
-Route::get('/cache-clear', function () {
+Route::post('/cache-clear', function () {
     Cache::flush();
     return ['status' => 'success', 'message' => 'Cache cleared successfully.'];
 })->name('cache.clear');
