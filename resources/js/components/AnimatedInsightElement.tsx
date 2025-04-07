@@ -5,7 +5,7 @@ function AnimatedInsightElement({ number }: { number: number }) {
     const count = useMotionValue(0);
     const [countContent, setCountContent] = React.useState(0)
     useEffect(() => {
-        const controls = animate(count, 100, { duration: 5 });
+        const controls = animate(count, number, { duration: 5 });
         count.on("change", (latest) => {
             setCountContent(Math.floor
                 (latest))
