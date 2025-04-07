@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/cache-clear', function () {
     Cache::flush();
     // clear varnish cache as well
-    if(env('VARNISH_CACHE_ENABLED', false) === 'true') {
-        $varnishURL = env('VARNISH_CACHE_URL');
+    if(env('VARNISH_CACHE_ENABLED', false) == true) {
+        $varnishURL = env(key: 'VARNISH_CACHE_URL');
         $varnishCacheTags = env('VARNISH_CACHE_TAGS');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $varnishURL);
