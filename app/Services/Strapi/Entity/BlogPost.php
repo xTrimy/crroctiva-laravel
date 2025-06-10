@@ -5,6 +5,7 @@ namespace App\Services\Strapi\Entity;
 use PHPHtmlParser\Dom;
 
 use Parsedown;
+use PHPHtmlParser\Options;
 
 class BlogPost{
     public $id;
@@ -24,13 +25,15 @@ class BlogPost{
 
     public function __construct($data)
     {
-        $dom = new Dom;
+        $dom = new \DOMDocument();
         $Parsedown = Parsedown::instance()->setBreaksEnabled(true);
         $this->id = $data['id'];
         $this->documentId = @$data['attributes']['documentId'];
         $this->title = $data['attributes']['title'];
         $this->body = $Parsedown->text($data['attributes']['content']);
-        $first_image = $dom->loadStr($this->body)->find('img')[0];
+        $dom->loadHTML($this->body, LIBXML_NOWARNING | LIBXML_NOERROR);
+        $xpath = new \DOMXPath($dom);
+        $first_image = $xpath->query('//img')->item(0);
         if($first_image){
             $this->previewImage = $first_image->getAttribute('src');
         }

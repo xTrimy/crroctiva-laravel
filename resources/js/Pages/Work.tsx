@@ -5,6 +5,7 @@ import Pagination from '@/components/Pagination'
 import WorkPreview from '@/components/WorkPreview'
 import { WorkItem } from '@/types/WorkItem'
 import { WorkPage } from '@/types/WorkPage'
+import { t } from 'i18next';
 function Work({ workPageData, workItems, pagination }: { workPageData: WorkPage, workItems: WorkItem[], pagination: PaginationType}) {
     return (
         <>
@@ -18,9 +19,11 @@ function Work({ workPageData, workItems, pagination }: { workPageData: WorkPage,
 
             <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
-                    Our Work
+                    {t('Our Work')}
                 </h2>
-                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
+                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>
+                    {t('Discover our portfolio of successful projects that showcase our expertise and innovation.')}
+                </p>
                 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center lg:w-full max-w-xl md:max-w-full mx-auto'>
                     {
@@ -35,6 +38,6 @@ function Work({ workPageData, workItems, pagination }: { workPageData: WorkPage,
     )
 }
 
-Work.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
+Work.layout = (page: any) => <BaseLayout children={page} title={t('Our Work')}></BaseLayout>
 
 export default Work

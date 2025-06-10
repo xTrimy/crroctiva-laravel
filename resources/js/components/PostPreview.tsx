@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react'
 import React, { useEffect } from 'react'
 import NoImage from '../assets/no-image.jpeg'
+import { t } from 'i18next'
 function PostPreview({ id, image, text }: { id: number, image: string, text?: string }) {
     if (text && text.length > 200) {
         text = text.slice(0, 200) + '...'
@@ -11,7 +12,7 @@ function PostPreview({ id, image, text }: { id: number, image: string, text?: st
                 <div className='w-full xl:h-96 lg:h-72 h-72 overflow-hidden rounded-md bg-black relative'>
                     <div className='w-full h-full flex justify-center items-center text-2xl absolute top-0 left-0 text-white text-bold'>
                         <p>
-                            Read More
+                            {t('Read More')}
                         </p>
                     </div>
                     <img src={image ?? NoImage} className='object-cover w-full h-full hover:scale-110 transition-all hover:opacity-50 absolute top-0 left-0' alt="" />
@@ -21,7 +22,7 @@ function PostPreview({ id, image, text }: { id: number, image: string, text?: st
             <div className=' drop-shadow-md mt-4 text-gray-500'>
                 <p className='text-xl'>{text}</p>
                 <Link href={`/post/${id}`}>
-                    <p className='mt-4 cursor-pointer hover:underline'>Read More</p>
+                    <p className='mt-4 cursor-pointer hover:underline'>{t('Discover More')}</p>
                 </Link>
             </div>
         </div>

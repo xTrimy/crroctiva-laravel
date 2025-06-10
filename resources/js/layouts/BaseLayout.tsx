@@ -1,24 +1,24 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import LoadingContext from '@/context/LoadingContext';
+import { GeneralSiteData } from '@/types/GeneralSiteData';
 import { Service } from '@/types/Service';
-import { router } from '@inertiajs/react'
+import { Head, router, usePage } from '@inertiajs/react'
 import { ArrowUp } from 'lucide-react';
-import { RefObject, use, useEffect, useRef, useState } from 'react'
+import { createContext, RefObject, use, useEffect, useRef, useState } from 'react'
 import MoonLoader from "react-spinners/MoonLoader";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-
+export default function Layout({ children, title }: { children: React.ReactNode, title?: string }) {
+    
     let mainRef = useRef<HTMLElement|null>(null);
     let backToTop = useRef<HTMLDivElement|null>(null);
+    const { generalData } = usePage<{ generalData: GeneralSiteData }>().props;
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         router.on('start', () => {
-            mainRef.current?.classList.add('opacity-50');
             setIsLoading(true);
         });
-
         router.on('finish', () => {
-            mainRef.current?.classList.remove('opacity-50');
             setIsLoading(false);
         });
         backToTop.current?.classList.add('opacity-0', 'translate-y-20');
@@ -33,8 +33,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         });
     }, [])
 
+    useEffect(() => {
+        if (isLoading) {
+            mainRef.current?.classList.add('opacity-50');
+        } else {
+            mainRef.current?.classList.remove('opacity-50');
+        }
+    }, [isLoading]);
+
     return (
-        <>
+        <LoadingContext.Provider value={{ isLoading: isLoading, setLoading: setIsLoading }}>
+            <Head>
+                <title>{title ? `${title} - ${generalData.title}` : generalData.title}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content={generalData.description} />
+                <link rel="icon" href="/favicon.ico" /> 
+            </Head>
         <main ref={mainRef} className='transition-all duration-300'>
             <div
             ref={backToTop}
@@ -60,6 +74,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
             )
         }
-        </>
+        </LoadingContext.Provider>
     )
 }

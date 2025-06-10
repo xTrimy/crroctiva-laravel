@@ -16,6 +16,9 @@ class WorkItems{
 
     public function __construct($data)
     {
+        if (!isset($data['data']) || !is_array($data['data'])) {
+            $data['data'] = [];
+        }
         $this->__pageableConstruct($data);
         $this->workItems = array_map(function($work){
             return new Work($work);

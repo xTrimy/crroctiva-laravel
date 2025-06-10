@@ -6,7 +6,9 @@ use App\Services\Strapi\Entity\About;
 use App\Services\Strapi\Entity\BlogPage;
 use App\Services\Strapi\Entity\BlogPost;
 use App\Services\Strapi\Entity\BlogPosts;
+use App\Services\Strapi\Entity\General;
 use App\Services\Strapi\Entity\Home;
+use App\Services\Strapi\Entity\Locale;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
 use App\Services\Strapi\Entity\ServicesPage;
@@ -15,11 +17,28 @@ use App\Services\Strapi\Entity\WorkItems;
 use App\Services\Strapi\Entity\WorkPage;
 use Illuminate\Support\Facades\Http;
 
+use function PHPSTORM_META\map;
+
 class StrapiService extends IStrapi{
 
     public function __construct()
     {
         parent::__construct();
+    }
+    public function locales(): array
+    {
+        $response = Http::timeout(60)->withToken($this->token)->withoutVerifying()->get($this->url . 'i18n/locales');
+        if ($response->failed()) {
+            return [];
+        }
+        return array_map(function ($locale) {
+            return new Locale($locale);
+        }, $response->json());
+    }
+    public function getGeneralData(): General
+    {
+        $data = $this->get('/general?populate=logo');
+        return new General($data);
     }
 
     public function getBlogPosts(int|null $limit = null, int|null $page = null): BlogPosts

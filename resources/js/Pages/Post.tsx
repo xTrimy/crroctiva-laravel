@@ -6,9 +6,14 @@ import 'react-multi-carousel/lib/styles.css';
 import BaseLayout from '@/layouts/BaseLayout'
 import { BlogPost } from '@/types/BlogPost';
 import '../../css/blog.scss'
+import { Head, usePage } from '@inertiajs/react';
+import { GeneralSiteData } from '@/types/GeneralSiteData';
+import { t } from 'i18next';
 function Post({post}: {post: BlogPost}) {
+    const { generalData } = usePage<{ generalData: GeneralSiteData }>().props;
     return (
         <>
+        <Head title={post.title + " - " + t('Blog') + " | " + generalData.title} />
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default' id="home">
                 <div className='lg:w-1/2 lg:text-start text-center'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>"Innovative Software<br /> Solutions for a Digital World"</h1>

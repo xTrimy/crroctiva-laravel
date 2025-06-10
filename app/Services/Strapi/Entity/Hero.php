@@ -10,6 +10,9 @@ class Hero{
 
     public function __construct(array $data)
     {
+        if (!isset($data['id']) || !isset($data['heroTitle']) || !isset($data['heroImage']['data'])) {
+            return; // Invalid data structure, do not initialize
+        }
         $this->id = $data['id'];
         $this->title = $data['heroTitle'];
         $this->content = $data['heroText'] ?? null;

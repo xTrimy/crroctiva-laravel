@@ -1,5 +1,6 @@
 import { AboutPage } from '@/types/AboutPage'
 import BaseLayout from '@/layouts/BaseLayout'
+import { t } from 'i18next'
 function About({about}: {about?: AboutPage}) {
     return (
         <>
@@ -29,6 +30,6 @@ function About({about}: {about?: AboutPage}) {
         </>
     )
 }
-About.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
+About.layout = (page: any) => <BaseLayout children={page} title={t('About Us')}></BaseLayout>
 
 export default About

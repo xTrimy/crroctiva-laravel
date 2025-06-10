@@ -34,11 +34,22 @@ class HandleInertiaRequests extends Middleware
      * @return array<string, mixed>
      */
     public function share(Request $request): array
-    {
+    {   
+     
         $strapi = new StrapiService();
         $services = $strapi->getServices(5);
+        $general = $strapi->getGeneralData();
+        $locales = $strapi->locales();
+        $defaultLocale = $request->getPreferredLanguage(collect($locales)->pluck('code')->toArray()) ?? config('app.fallback_locale');
+        $currentLocale = session('locale', $defaultLocale);
+        if (!$currentLocale || !collect($locales)->contains('code', $currentLocale)) {
+            $currentLocale = $defaultLocale;
+        }
         return array_merge(parent::share($request), [
             'navbar_services' => $services,
+            'generalData' => $general,
+            'locales' => $locales,
+            'locale' => $currentLocale,
         ]);
     }
 }

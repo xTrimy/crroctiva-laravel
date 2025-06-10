@@ -8,9 +8,15 @@ import { BlogPost } from '@/types/BlogPost';
 import '../../css/blog.scss'
 import { Service } from '@/types/Service';
 import NoImage from '../assets/no-image.jpeg'
+import { Head, usePage } from '@inertiajs/react';
+import { GeneralSiteData } from '@/types/GeneralSiteData';
+import { t } from 'i18next';
 function Post({ service }: {service: Service}) {
+    const { generalData } = usePage<{ generalData: GeneralSiteData }>().props;
+    
     return (
         <>
+        <Head title={service.name + " - " + t('Services') + " | " + generalData.title} />
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default' id="home">
                 <div className='lg:w-1/2 lg:text-start text-center'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>{service.name}</h1>
@@ -32,7 +38,7 @@ function Post({ service }: {service: Service}) {
             <div className='grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 w-full grid p-inline-default gap-4'>
           
                 {service.features?.map((feature, index) => (
-                    <div key={feature.id} className='col-span-1 row-span-1 p-8 rounded-md bg-[#33BDD7] text-white'>
+                    <div key={feature.id} className='col-span-1 row-span-1 p-8 rounded-md bg-[#913E49] text-white'>
                         <div className=' drop-shadow-md '>
                             <img width={50} height={50} className='object-contain object-left' src={feature.icon} alt={feature.name + " icon"} />
                             <h1 className='text-xl font-bold mb-4'>{feature.name}</h1>

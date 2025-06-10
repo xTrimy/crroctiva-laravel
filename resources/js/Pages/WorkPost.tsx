@@ -8,9 +8,14 @@ import { BlogPost } from '@/types/BlogPost';
 import '../../css/blog.scss'
 import { WorkItem } from '@/types/WorkItem';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { Head, usePage } from '@inertiajs/react';
+import { GeneralSiteData } from '@/types/GeneralSiteData';
+import { t } from 'i18next';
 function WorkPost({work}: {work: WorkItem}) {
+    const { generalData } = usePage<{ generalData: GeneralSiteData }>().props;
     return (
         <>
+            <Head title={work.title + " - " + t('Our Work') + " | " + generalData.title} />
             <div className='w-full lg:py-48 py-36 text-white relative p-inline-default bg-black' id="home">
                 <img src={work.image} alt="" className='absolute w-full h-full top-0 left-0 object-cover opacity-40' />
                 <div className='lg:w-1/2 lg:text-start text-center relative'>

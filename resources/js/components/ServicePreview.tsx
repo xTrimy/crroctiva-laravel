@@ -1,5 +1,6 @@
 import { Service } from '@/types/Service'
 import { Link } from '@inertiajs/react'
+import { t } from 'i18next'
 import React from 'react'
 
 function ServicePreview({ service, className }: { service: Service, className?: string }) {
@@ -18,7 +19,7 @@ function ServicePreview({ service, className }: { service: Service, className?: 
               </div>
               <div className='flex justify-between mt-8'>
                   <Link href={`/service/${service.id}`} className='hover:underline text-white'>
-                      Discover More
+                      {t('Discover More')}
                   </Link>
               </div>
           </div>

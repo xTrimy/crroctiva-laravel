@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 import { Service } from '@/types/Service';
 import ServicePreview from '@/components/ServicePreview';
 import { ServicesPage } from '@/types/ServicesPage';
+import { t } from 'i18next';
 function Services({ servicesPageData, services }: { servicesPageData: ServicesPage, services: Service[]}) {
     return (
         <>
@@ -16,9 +17,9 @@ function Services({ servicesPageData, services }: { servicesPageData: ServicesPa
 
             <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
-                    Our Services
+                    {t('Our Services')}
                 </h2>
-                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
+                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>{t('Discover our suite of software solutions')}</p>
                 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center lg:w-full max-w-xl md:max-w-full mx-auto'>
                     {
@@ -32,6 +33,6 @@ function Services({ servicesPageData, services }: { servicesPageData: ServicesPa
     )
 }
 
-Services.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
+Services.layout = (page: any) => <BaseLayout children={page} title={t('Services')}></BaseLayout>
 
 export default Services

@@ -25,6 +25,7 @@ import { WorkItem } from '@/types/WorkItem';
 import { HomePage } from '@/types/HomePage';
 import { motion } from "motion/react"
 import AnimatedInsightElement from '@/components/AnimatedInsightElement';
+import { t } from 'i18next';
 
 function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[], partners: Partner[], services: Service[], work: WorkItem[], homeData: HomePage}) {
    
@@ -43,7 +44,7 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
             </div>
             <div className='w-full mb-8 bg-[#913E49] text-white p-inline-default lg:py-8 py-4 flex lg:flex-nowrap flex-wrap justify-between items-center'>
                 <h2 className='text-3xl font-bold lg:py-8 py-4 lg:w-auto w-full lg:text-start text-center' id="about">
-                    Insights
+                    {t('Insights')}
                 </h2>
                 <motion.div 
                 variants={{ 
@@ -65,16 +66,16 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
                     variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
                     whileInView="visible"
                     className='text-3xl font-bold text-center'>
-                    Our Services
+                    {t('Our Services')}
                 </motion.h2>
                 <motion.p variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
                     whileInView="visible"
-                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</motion.p>
+                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>{t('Discover our suite of software solutions')}</motion.p>
                 <ServiceCarousel services={services} />
 
             </div>
             <div className='items-center bg-[#D9F9F3] flex p-inline-default py-8 lg:justify-between justify-center flex-wrap lg:flex-nowrap '>
-                <h1 className='text-gray-500 md:text-4xl text-3xl font-bold lg:w-1/3'>Partners</h1>
+                <h1 className='text-gray-500 md:text-4xl text-3xl font-bold lg:w-1/3'>{t('Our Partners')}</h1>
                 <div className='flex flex-wrap gap-8 lg:justify-normal justify-center'>
                     {partners.map((partner) => <div className='md:w-36 md:h-24 w-24 h-16 '>
                         <img src={partner.image} alt={"Crroctiva Partner " + partner.name} className='w-full h-full'  />
@@ -88,11 +89,13 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
                     variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
                     whileInView="visible"
                 className='text-3xl font-bold text-center'>
-                    Our Work
+                    {t('Our Work')}
                 </motion.h2>
                 <motion.p variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
                     whileInView="visible" 
-                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</motion.p>
+                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>
+                        {t('Discover our portfolio of successful projects that showcase our expertise and innovation.')}
+                        </motion.p>
                 <motion.div
                     variants={{
                         hidden: { opacity: 0 },
@@ -113,7 +116,7 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
                 </motion.div>
             </div>
             <Link href="/work" >
-                <Button className='mx-auto block' >Discover More</Button>
+                <Button className='mx-auto block' >{t('Discover More')}</Button>
             </Link>
 
             <div className='p-inline-default py-8' id="company">
@@ -121,11 +124,13 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
                     variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
                     whileInView="visible"
                     className='text-3xl font-bold text-center'>
-                    Blog
+                    {t('Blog')}
                 </motion.h2>
                 <motion.p variants={{ hidden: { opacity: 0, y: '100%' }, visible: { opacity: 1, y: 0 } }} initial="hidden" viewport={{ once: true, margin: "-50px" }}
                     whileInView="visible"
-                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</motion.p>
+                    className='text-gray-600 text-center w-72 mt-4 mx-auto'>
+                        {t('Explore our latest blog posts to stay updated with industry trends, insights, and expert opinions.')}
+                    </motion.p>
                 <motion.div
                     variants={{
                         hidden: { opacity: 0 },
@@ -151,12 +156,12 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
                 </motion.div>
             </div>
             <Link href="/blog" >
-                <Button className='mx-auto block' >Discover More Blog Posts</Button>
+                <Button className='mx-auto block' >{t('Discover More Blog Posts')}</Button>
             </Link>
 
         </>
     )
 }
-Home.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
+Home.layout = (page: any) => <BaseLayout children={page} title={t('Home')}></BaseLayout>
 
 export default Home

@@ -6,6 +6,7 @@ use App\Services\Strapi\Entity\About;
 use App\Services\Strapi\Entity\BlogPage;
 use App\Services\Strapi\Entity\BlogPost;
 use App\Services\Strapi\Entity\BlogPosts;
+use App\Services\Strapi\Entity\General;
 use App\Services\Strapi\Entity\Home;
 use App\Services\Strapi\Entity\Partner;
 use App\Services\Strapi\Entity\Service;
@@ -31,10 +32,18 @@ abstract class IStrapi
     protected function get(string $endpoint, bool $withMetaData = false): array | null
     {
         $endpoint = ltrim($endpoint, '/');
+        $locales = $this->locales();
+        $defaultLocale = request()->getPreferredLanguage(collect($locales)->pluck(value: 'code')->toArray()) ?? config('app.fallback_locale');
+        if (strpos($endpoint, '?') === false) {
+            $locale = session('locale', $defaultLocale);
+            $endpoint .= "?locale={$locale}";
+        } else {
+            $endpoint .= "&locale=" . session('locale', $defaultLocale);
+        }
         if (Cache::has($endpoint)) {
             return Cache::get($endpoint);
         }
-        $response = Http::timeout(60)->withToken($this->token)->get($this->url  . $endpoint);
+        $response = Http::timeout(60)->withToken($this->token)->withoutVerifying()->get($this->url  . $endpoint);
         if ($response->failed()) {
             return null;
         }
@@ -47,6 +56,7 @@ abstract class IStrapi
         return $response->json()['data'];
     }
 
+    public abstract function getGeneralData(): General;
     public abstract function getBlogPosts(int $limit = null, int $page = null): BlogPosts;
     public abstract function getBlogPost(string $id): BlogPost;
     public abstract function getPartners(): array;

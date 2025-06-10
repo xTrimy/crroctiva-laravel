@@ -16,6 +16,9 @@ class BlogPosts{
 
     public function __construct($data)
     {
+        if(!isset($data['data']) || !is_array($data['data'])) {
+            $data['data'] = [];
+        }
         $this->__pageableConstruct($data);
         $this->posts = array_map(function($post){
             return new BlogPost($post);

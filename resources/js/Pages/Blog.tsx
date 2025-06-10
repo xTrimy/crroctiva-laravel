@@ -20,6 +20,7 @@ import { BlogPage } from '@/types/BlogPage'
 import PostPreview from '@/components/PostPreview'
 import { PaginationType } from '@/types/PaginationType'
 import Pagination from '@/components/Pagination'
+import { t } from 'i18next'
 function Blog({blogPageData, blogPosts, pagination}: {blogPageData: BlogPage, blogPosts: BlogPost[], pagination: PaginationType}) {
     return (
         <>
@@ -33,9 +34,9 @@ function Blog({blogPageData, blogPosts, pagination}: {blogPageData: BlogPage, bl
 
             <div className='p-inline-default py-8' id="company">
                 <h2 className='text-3xl font-bold text-center'>
-                    Blog
+                    {t('Blog')}
                 </h2>
-                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>Discover our suite of software solutions designed to transform your business.</p>
+                <p className='text-gray-600 text-center w-72 mt-4 mx-auto'>{t('Explore our latest blog posts to stay updated with industry trends, insights, and expert opinions.')}</p>
                 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 lg:flex-nowrap flex-wrap justify-center lg:w-full max-w-xl md:max-w-full mx-auto'>
                     {
@@ -50,6 +51,6 @@ function Blog({blogPageData, blogPosts, pagination}: {blogPageData: BlogPage, bl
     )
 }
 
-Blog.layout = (page: any) => <BaseLayout children={page}></BaseLayout>
+Blog.layout = (page: any) => <BaseLayout children={page} title='Blog'></BaseLayout>
 
 export default Blog

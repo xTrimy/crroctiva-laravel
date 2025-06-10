@@ -5,6 +5,7 @@ import {  MoveRight } from 'lucide-react'
 import Atropos from 'atropos';
 
 import React, { useEffect } from 'react'
+import { t } from 'i18next';
 
 function WorkPreview({work}: {work: WorkItem}) {
     useEffect(()=>{
@@ -34,7 +35,7 @@ function WorkPreview({work}: {work: WorkItem}) {
                                     {work.title}
                                 </p>
                                 <div className='flex items-center mt-4 gap-1 group-hover:gap-3 transition-all'>
-                                    <p>Discover More</p><MoveRight size={18} className='-translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all' />
+                                    <p>{t('Discover More')}</p><MoveRight size={18} className='-translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all' />
                                 </div>
                             </div>
                         </Link>
