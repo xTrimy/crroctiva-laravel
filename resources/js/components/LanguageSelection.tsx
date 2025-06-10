@@ -16,7 +16,7 @@ function LanguageSelection() {
         if (setLoading) {
             setLoading(true);
         }
-        axios.post(route('setLocale', { locale: newLocale })).then((data) => {
+        axios.get(route('setLocale', { locale: newLocale })).then((data) => {
             router.visit(
                 window.location.pathname + window.location.search,
                 {

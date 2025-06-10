@@ -5,10 +5,10 @@ use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/locale/{locale}', [LocaleController::class, 'change'])
+Route::get('/locale/{locale}', [LocaleController::class, 'change'])
     ->name('setLocale')
     ->where('locale', '[a-zA-Z]+');
-    
+
     Route::get('/',     [MainController::class, 'home'])->name('home');
     Route::get('/about', [MainController::class, 'about'])->name('about');
     Route::get('/blog', [MainController::class, 'blog'])->name('blog');
