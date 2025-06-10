@@ -6,11 +6,13 @@ import React, { useContext, useEffect } from 'react'
 import { route } from 'ziggy-js';
 import i18n from "i18next";
 import { Locale } from '@/types/Locale';
+import { useLocalStorage } from 'usehooks-ts';
 
 function LanguageSelection() {
     const { locale, locales } = usePage<{ locale: string, locales: Locale[] }>().props;
     const { currentURL } = usePage<{ currentURL: string }>().props;
     const { setLoading } = useContext(LoadingContext);
+    const [localeStore, setLocaleValue, removeLocaleValue] = useLocalStorage('locale', locale);
     console.log('LanguageSelection rendered with locale:', locale, 'and locales:', locales);
     const handleLanguageChange = (newLocale: string) => {
         if (setLoading) {
@@ -25,7 +27,7 @@ function LanguageSelection() {
                 preserveScroll: true,
                 onSuccess: () => {
                     changeDirection(locale);
-                    localStorage.setItem('locale', newLocale);
+                    setLocaleValue(newLocale);
                     i18n.changeLanguage(newLocale).then(() => {
                         if (setLoading) {
                             setLoading(false);
@@ -39,7 +41,7 @@ function LanguageSelection() {
         });
     }
     useEffect(() => {
-        localStorage.setItem('locale', locale);
+        setLocaleValue(locale);
         i18n.changeLanguage(locale).then(() => {
             changeDirection(locale);
     });

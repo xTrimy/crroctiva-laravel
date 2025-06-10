@@ -14,9 +14,12 @@ const resources = {
     }
 };
 // get the locale from localStorage or default to 'en'
-const savedLocale = localStorage.getItem('locale') || 'en';
-// set the initial language based on the saved locale
+let savedLocale = 'en';
+if (typeof window !== 'undefined') {
+    savedLocale = window.localStorage.getItem('locale') || 'en';
+}
 
+// set the initial language based on the saved locale
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
     .init({
