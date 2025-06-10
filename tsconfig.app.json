@@ -35,6 +35,6 @@
     "vitest.d.ts",
     "resources/js/**/*.ts",
     "resources/js/**/*.tsx"
-  ],
+, "resources/js/ziggy.js", "resources/js/ssr.js", "resources/js/app.js"  ],
   // "include": ["src"]
 }

@@ -1,3 +1,4 @@
+"use client";
 import { AboutPage } from '@/types/AboutPage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { t } from 'i18next'

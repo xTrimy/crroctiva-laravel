@@ -13,7 +13,6 @@ function LanguageSelection() {
     const { currentURL } = usePage<{ currentURL: string }>().props;
     const { setLoading } = useContext(LoadingContext);
     const [localeStore, setLocaleValue, removeLocaleValue] = useLocalStorage('locale', locale);
-    console.log('LanguageSelection rendered with locale:', locale, 'and locales:', locales);
     const handleLanguageChange = (newLocale: string) => {
         if (setLoading) {
             setLoading(true);

@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '../components/Header'
 import CompanyFinanceImage from '../assets/company-finance.png'
 import CompanyITImage from '../assets/it-company.png'

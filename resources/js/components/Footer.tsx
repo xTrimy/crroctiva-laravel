@@ -3,10 +3,8 @@ import Logo from '../assets/seat.png';
 import FacebookLogo from '../assets/svg/Facebook.png'
 import LinkedInLogo from '../assets/svg/LinkedIn.png'
 import TwitterLogo from '../assets/svg/TwitterX.png'
-import { useRoute } from 'ziggy-js';
 
 function Footer() {
-const route = useRoute();
 
   return (
       <footer className='flex p-inline-default py-8 bg-[#913E49] mt-12 justify-between lg:flex-nowrap flex-wrap'>
@@ -24,27 +22,27 @@ const route = useRoute();
               <ul className='block md:w-auto w-full text-center md:text-start'>
                   <li className='text-white text-lg'>Links</li>
                   <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                    <Link href={route('home')}>
+                    <Link href="/">
                         Home
                     </Link>
                   </li>
                   <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                    <Link href={route('about')}>
+                    <Link href="/about">
                         About Us
                     </Link>
                     </li>
                   <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                    <Link href={route('services')}>
+                    <Link href="/services">
                         Services
                     </Link>
                   </li>
                     <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                        <Link href={route('work')}>
+                        <Link href="/work">
                             Our Work
                         </Link>
                     </li>
                     <li className='text-white text-sm hover:underline w-fit mx-auto md:mx-0'>
-                        <Link href={route('blog')}>
+                        <Link href="/blog">
                             Blog
                         </Link>
                     </li>

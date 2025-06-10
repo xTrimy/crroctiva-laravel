@@ -33,7 +33,7 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/inertia-react": "^0.8.1",
-        "@inertiajs/react": "^2.0.3",
+        "@inertiajs/react": "^2.0.12",
         "@radix-ui/react-dialog": "^1.1.5",
         "@strapi/blocks-react-renderer": "^1.0.2",
         "@tailwindcss/vite": "^4.0.2",
@@ -56,6 +56,6 @@
         "tailwind-merge": "^3.0.1",
         "tailwindcss-animate": "^1.0.7",
         "usehooks-ts": "^3.1.1",
-        "ziggy-js": "^2.5.2"
+        "ziggy-js": "^2.5.3"
     }
 }

@@ -1,3 +1,4 @@
+"use client";
 import CompanyFinanceImage from '../assets/company-finance.png'
 import CompanyITImage from '../assets/it-company.png'
 import ThirdCompanyImage from '../assets/third-company.png'

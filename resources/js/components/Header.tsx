@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Logo from '../assets/seat.png';
 import Button from './Button';
 import {
@@ -42,13 +42,19 @@ function Header() {
         }
     };
 
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 100) {
-            setHeaderTop(true);
-        } else {
-            setHeaderTop(false);
+    useEffect(() => {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 100) {
+                setHeaderTop(true);
+            } else {
+                setHeaderTop(false);
+            }
+        });
+        return () => {
+            window.removeEventListener('scroll', () => { });
         }
-    });
+    }
+    , []);
 
     const setSidebarFunction = (value: boolean) => {
         setSidebarMenuOpen(value);

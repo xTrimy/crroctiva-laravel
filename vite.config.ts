@@ -10,7 +10,7 @@ export default defineConfig({
         tsconfigPaths(),
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
-            ssr: 'resources/js/ssr.js',
+            ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
     ],

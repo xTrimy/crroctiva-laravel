@@ -14,4 +14,6 @@ declare module 'ziggy-js' {
     ]
 }
 }
+
+
 export {};

@@ -1,7 +1,6 @@
 import { Service } from '@/types/Service'
 import { Link } from '@inertiajs/react'
 import { t } from 'i18next'
-import React from 'react'
 
 function ServicePreview({ service, className }: { service: Service, className?: string }) {
 

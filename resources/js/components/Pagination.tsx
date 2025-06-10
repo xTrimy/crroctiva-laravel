@@ -1,8 +1,12 @@
+"use client";
 import { PaginationType } from '@/types/PaginationType'
 import { Link } from '@inertiajs/react'
 import React from 'react'
 
 function Pagination({ pagination }: { pagination: PaginationType }) {
+    if(typeof window === 'undefined'){
+        return <></>;
+    }
     let params = new URLSearchParams(window.location.search)
     let page = parseInt(params.get('page') ?? '1')
     let url = window.location.pathname

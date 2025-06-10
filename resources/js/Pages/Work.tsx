@@ -1,3 +1,4 @@
+"use client";
 import 'react-multi-carousel/lib/styles.css';
 import BaseLayout from '@/layouts/BaseLayout'
 import { PaginationType } from '@/types/PaginationType'

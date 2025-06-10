@@ -1,3 +1,4 @@
+"use client";
 import { markdownToTxt } from 'markdown-to-txt';
 import { convert } from 'html-to-text';
 import CompanyFinanceImage from '../assets/company-finance.png'
@@ -77,7 +78,7 @@ function Home({ blogs, partners, services, work, homeData }: { blogs: BlogPost[]
             <div className='items-center bg-[#D9F9F3] flex p-inline-default py-8 lg:justify-between justify-center flex-wrap lg:flex-nowrap '>
                 <h1 className='text-gray-500 md:text-4xl text-3xl font-bold lg:w-1/3'>{t('Our Partners')}</h1>
                 <div className='flex flex-wrap gap-8 lg:justify-normal justify-center'>
-                    {partners.map((partner) => <div className='md:w-36 md:h-24 w-24 h-16 '>
+                    {partners.map((partner) => <div key={partner.id} className='md:w-36 md:h-24 w-24 h-16 '>
                         <img src={partner.image} alt={"Crroctiva Partner " + partner.name} className='w-full h-full'  />
                     </div>)}
                   
